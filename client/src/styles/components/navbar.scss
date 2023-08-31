@@ -1,0 +1,160 @@
+.header, .header__logo-container, .header__nav, .header__nav__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    z-index: 2;
+    background-color: $color-white;
+    padding: 0.2rem 6%;
+    font-size: 20px;
+    
+    &__logo-container{
+        gap: 1.75rem;
+        &__name{
+            font-size: 2rem;
+            font-weight: bold;
+            color: $color-black;
+        }
+        &__name2{
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: $color-main-light;
+        }
+        &__input{
+            background-color: $color-white;
+            border-radius: 8px;
+            gap: 3rem;
+            padding: 0.3rem 1rem;
+            input{
+                all: unset;
+            }
+            & .MuiButtonBase-root{
+                padding: 0.2rem;
+                
+            }
+        }
+        
+
+        
+    }
+
+    &__icon{
+        position: absolute;
+        border-radius: 50%;
+        background-color: white;
+        width: 80px;
+        height: 80px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        left: 48%;
+        cursor: pointer;
+
+        &:hover{
+            background-color: $color-main;
+        }
+        @media(max-width:600px){
+            left: 44%;
+        }    
+
+    }
+
+    &--color{
+        background-color: $color-main-light !important;
+    }
+
+    &__nav{
+        gap: 2rem;
+        &__icons{
+            width: 180px;
+            border-radius: 0.25rem;
+            padding: 0.25rem 1rem;
+            & .MuiSvgIcon-root {
+                padding-right: 0.25rem;
+                width: 2.5rem;
+                color: $color-black;
+            }
+            & .MuiSelect-select:focus {
+                background-color: #e7e7e7
+            }
+        }
+        & .MuiFormControl-root{
+            background-color: $color-white;
+            padding: 0.25rem 1rem;
+            border-radius: 3px;
+
+        }
+        
+        &__toggle{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            z-index: 10;
+            max-width: 600px;
+            min-width: 340px;
+            background-color: #F6F2F4;
+
+            &__close{
+                display: flex;
+                justify-content: flex-end;
+                padding: 1rem;
+            }
+        }
+
+        &--toggle{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        &--wl{
+            gap: 1rem;
+            list-style-type: none;  
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a:hover{
+                border-bottom: 1px solid $color-main;;
+            }
+            
+        }
+
+        &__item{
+            a{
+                padding: 0.4rem 2rem;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+            a:hover{
+                border:2px solid $color-main;;
+                  
+            }
+            a.active{
+
+                    background-color: $color-main;;
+                    color: $color-white;
+                
+                
+            }
+        }  
+    }
+
+    &--wl{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 0rem 6%;
+        background-color: rgba(234, 234, 234, 0.4);
+        box-shadow: none;
+    }  
+
+    
+    
+}
+ 

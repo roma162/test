@@ -1,0 +1,210 @@
+.mypost{
+    padding: 1rem 1rem 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    box-shadow: 0 3px 0px $color-main-light;
+    //border-right: 3px solid $color-main;
+    border-bottom: 3px solid $color-main;
+
+    span{
+        text-align: center;
+        align-items: center;
+        line-height: 1.22;
+        color: #959595;
+    }
+
+    .MuiButtonBase-root{
+        background-color: $color-main-light;
+        color: $color-white !important;
+    }
+    .MuiButtonBase-root:hover{
+        background-color: $color-main;
+        color: $color-white
+    }
+    .css-do0me7-MuiButtonBase-root-MuiButton-root {
+        color:$color-white;
+    }
+
+    .css-do0me7-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+        background-color: #F6F2F4;
+        color: #9B9A9C !important;
+    }
+
+    .css-kbrvxl-MuiInputBase-root {
+        padding: 0.5rem 2rem;
+
+    }
+    
+    &__date{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-radius: 2rem;
+        background-color: #F6F2F4;
+
+        .css-kbrvxl-MuiInputBase-root {
+            width: 35% !important;
+        }
+        .react-datetime-picker {
+            width: 35% !important;
+            margin-right: 1rem;
+        }
+
+        &--user-location{
+            display: flex;
+           text-align: left;
+            margin: auto;
+            font-size: 1.5rem;
+            cursor: not-allowed;
+            color: rgb(179, 179, 179);
+
+            span{
+                float: left;
+                width:100%;
+    text-align:left;
+            }
+        }
+    }
+    &__dropzone{
+        border: 1px solid #d8d8d8;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+
+        &--image{
+            border: 2px solid rgb(206, 206, 206);       
+            padding: 0.5rem;
+            width: 100%;    
+        }
+
+    
+    }
+
+
+    
+}
+
+.posts{
+    padding: 0rem 1rem 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    color: #959595;
+    box-shadow: 0 3px 0px $color-main-light;
+   // border-right: 3px solid $color-main;
+    border-bottom: 3px solid $color-main;
+
+    h6{
+        margin: 0;
+        padding: 0;
+        font-weight: 400;
+        font-size: 0.7rem;
+    }
+
+    h5{
+        margin-top: 8px;
+        margin-left: 8px;
+        margin: 0;
+        font-weight: 200;
+    }
+
+    h4{
+        margin: 0;
+    }
+
+    span{
+        text-align: center;
+        align-items: center;
+        line-height: 1.22;
+        color: #959595;
+    }
+
+    &__info{
+        display: flex;
+        align-items: center;
+        padding-right: 1rem;
+
+        span{
+            font-size: 1rem;
+            color: #535353;
+        }
+    }
+
+    &__name{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        span{
+            padding: 0.5rem 0.5rem;
+        }
+
+        h4{
+            font-size: 1.5rem;
+            color: #535353;
+            font-weight: 500;
+            position: relative;
+            top: 0;
+        }
+    }
+
+    &__desc{
+        padding: 0.5rem 0;
+
+        span{
+            font-size: 1.4rem;
+            color: #535353;
+        }
+    }
+
+    &__comment{
+        .MuiButtonBase-root:hover{
+            color: white;
+            background-color: $color-main;
+        }
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+//OVERRIDES
+
+.css-kbrvxl-MuiInputBase-root{
+    padding: 0;
+}
+
+.css-9rpfdd-MuiDivider-root{
+    margin: 0.75rem 0 !important; 
+}
+
+.react-datetime-picker__wrapper{
+    color: gray !important;
+    border: none !important;
+}
+
+.css-kbrvxl-MuiInputBase-root {
+    width: 100% !important;
+}
+
+
+.react-datetime-picker__inputGroup__input {
+    color: #9B9A9C !important;
+}
+
+.react-datetime-picker__button__icon {
+    stroke: #9B9A9C;
+}
+
+.comment{
+    color: $color-main-light;
+}

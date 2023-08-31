@@ -1,0 +1,21 @@
+.gallery{
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    padding: 1rem 2rem;
+    background-color: $color-white;
+
+    h1{
+        display:inline-block; 
+        border-bottom: 5px solid $color-main-light;
+        margin: 0;
+    }
+
+    @media(max-width:1150px){
+        width: 100%;
+    }
+    @media(max-width:600px){
+        padding: 1rem;
+    }    
+}

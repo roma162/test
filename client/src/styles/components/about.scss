@@ -1,0 +1,49 @@
+.about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+    padding-bottom: 4rem;
+
+    @media(max-width:600px){
+        padding-bottom: 0.5rem;
+    }
+
+    @media(max-width:1000px){
+        display: block;
+    }
+    h1{
+        display:inline-block; 
+        border-bottom: 5px solid $color-main-light;
+        margin: 0;
+    }
+
+    &__ilustration{
+        text-align: center;
+        width: 46%;
+        @media(max-width:1000px){
+            width: 94%;
+        }
+    
+    }
+    &_content{
+        box-shadow: 5px 5px 0px $color-main-light;
+        z-index: 1;
+        border-right: 5px solid $color-main;
+        border-bottom: 5px solid $color-main;
+        background-color: $color-white;
+        width: 40%;
+        padding: 1rem 2rem;
+        @media(max-width:1000px){
+            width: 90%;
+            margin: auto;
+        }         
+    }
+
+    h6{
+        font-size: 1em;
+        font-weight: 300;
+    }
+
+}

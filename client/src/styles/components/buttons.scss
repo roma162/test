@@ -1,0 +1,33 @@
+.btn{
+    &--login{
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: $color-main;
+        color: $color-white;
+        
+        &:hover{
+            background-color: $color-black;
+            color:$color-main;
+        }
+
+        & .MuiButtonBase-root{
+            background-color: $color-main;
+        }
+    }
+}
+
+
+.color-main
+{
+    background-color: $color-main;
+}
+
+.hTXjKY .buttons {
+    width:  100%;
+    justify-content: space-between !important;
+}
+.prev{
+    position: relative;
+    color: red;
+    float: right;
+}

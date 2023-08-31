@@ -1,0 +1,19 @@
+.profile{
+    width: 100%;
+    padding: 1.5rem 3%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    min-height: calc(100vh - 70px);
+
+
+    
+
+    &__user{
+        width: 30%;
+    }
+
+    &__content{
+        width: 48%;
+    }
+}

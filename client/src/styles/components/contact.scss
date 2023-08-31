@@ -1,0 +1,49 @@
+
+.contact{
+    display: block;
+    width: 80%;
+    margin: auto;
+    &__icons{
+        display: flex;
+        text-align: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    span{
+        font-size: 1.1rem;
+    }
+    @media(max-width:1000px){
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    @media(max-width:600px){
+        width: 100%;
+        padding: 0
+    }
+
+    h4{
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 40%;
+    gap: 2rem;
+    padding: 1rem;
+
+    h1{
+        display:inline-block; 
+        border-bottom: 5px solid $color-main-light;
+        margin: 0;
+    }
+
+    @media(max-width:1000px){
+        width: 100%;
+    }
+}
+    

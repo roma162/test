@@ -1,0 +1,52 @@
+.wl-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../../assets/images/travel.jpg");
+    height: 560px;
+    font-size: 2.1rem;
+    padding: 2rem;
+    color: white;
+    &__ilustration{
+        width: 50%;
+        background-color: $color-white;
+        
+    }
+
+    &__login{
+        width: 50%;
+    }
+
+    &--quote{
+        display: block;
+    }
+
+    h3{
+        background-color: rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    @media(max-width:600px){
+        background-image: url("../../assets/images/travelMob.jpg");
+    }
+
+}
+
+.blank{
+    height: 50px;
+}
+
+.color{
+    background-color: $color-main-light;
+}
+
+.color-white{
+    background-color: $color-white;
+    width: 100%;
+}
+
+.color-gray{
+    background-color: #F6F2F4;
+}
+

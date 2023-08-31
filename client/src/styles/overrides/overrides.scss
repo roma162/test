@@ -1,0 +1,88 @@
+//.MuiPaper-root {
+  //  top:64px !important;
+  //  @media(max-width:1000px){
+   //     top: 208px !important;
+   // }
+//}
+
+.image-gallery-image{
+  width: 700px !important;
+  @media(max-width:800px){
+    width: 400px !important;
+  }
+  @media(max-width:600px){
+    width: 300px !important;
+}  
+}
+
+.image-gallery-play-button{
+  display: none !important;
+}
+
+.image-gallery-fullscreen-button{
+  display: none !important;;
+}
+
+
+.image-gallery-svg{
+  color: $color-main-light;
+}
+
+.image-gallery-thumbnail.active{
+  border: 4px solid $color-main-light !important;
+}
+
+.react-reveal .about-us{
+  background-color: white !important;
+}
+
+.iconbox-container{
+  @media(max-width:1150px){
+    width: 40%;
+  }
+  @media(max-width:800px){
+    width: 60%;
+  }
+  @media(max-width:600px){
+    width: 80%;
+  }
+}
+
+.css-g2q10s-MuiButtonBase-root-MuiButton-root {
+  background-color: $color-main-light !important;
+}
+
+.css-g2q10s-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: $color-main !important;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent	; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-main-light;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $color-main; 
+}
+
+.css-do0me7-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: $color-main-light;
+  color: $color-white !important;
+}
+
+.css-do0me7-MuiButtonBase-root-MuiButton-root {
+  color: $color-main !important;
+}

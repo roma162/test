@@ -1,0 +1,55 @@
+.user{
+    position: fixed;
+    width: 28%;
+    padding: 0 1rem 0.75rem 1.5rem;
+    background-color: $color-white;
+    border-radius: 0.75rem;
+    color: black;
+    box-shadow: 0 3px 0px $color-main-light;
+    border-bottom: 3px solid $color-main;
+    z-index: 1;
+    @media(max-width:1000px){
+        position: inherit;
+        width: 100%;
+    }
+
+    &__info, &__desc, &__socials{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__info{   
+        gap: 0.5rem;
+
+        h4{
+            font-size: 20px;
+            font-weight: 600;
+            color: #535353;
+        }
+        h4:hover{
+            color: black;
+            cursor: pointer;
+        }
+    
+    }
+
+    &__desc{
+        padding: 0.5rem;
+        
+        span{
+            color: #B7B7B7;
+        }
+        &--toggle{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button{
+            text-transform: lowercase;
+            font-style: italic;
+        }
+    }
+    
+} 

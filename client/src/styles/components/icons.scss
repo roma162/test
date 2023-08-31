@@ -1,0 +1,199 @@
+.icons{
+    &--lg{
+        height: 600px;
+        width: 600px;
+    }
+    &--mdlg{
+        height: 60px;
+        width: 100px;
+    }
+
+    &--md{
+        height: 60px;
+        width: 60px;
+    }
+    &--sm{
+        height: 30px;
+        width: 30px;
+    }
+
+    &--xsm{
+        height: 20px;
+        width: 20px;
+    }
+
+    &--xxsm{
+        height: 10px;
+        width: 10px;
+    }
+
+    //Icon types
+    &--welcome01{
+        content:url(../../assets/illustrations/login.svg);
+        cursor: pointer;
+    }   
+    &--welcome02{
+        content:url(../../assets/illustrations/login02.svg);
+
+    }
+    &--aboutus{
+        content:url(../../assets/illustrations/aboutus.svg);
+        width: 600px;
+        @media(max-width:600px){
+            width: 380px;
+        }
+
+    }
+    &--contact{
+        content:url(../../assets/illustrations/contact.svg);
+        width: 600px;
+        @media(max-width:600px){
+            width: 380px;
+            margin-top: 4rem;
+        }
+
+    }
+
+    &--login-form{
+        content:url(../../assets/illustrations/login-form.svg);
+        width: 300px;
+        @media(max-width:600px){
+            width: 380px;
+            margin-top: 4rem;
+        }
+
+    }
+
+
+    &--sailboat{
+        content:url(../../assets/illustrations/sailboat.svg);
+
+    }
+
+    &--plane{
+        content:url(../../assets/illustrations/plane.svg);
+    
+    }
+
+    &--car{
+        content:url(../../assets/illustrations/car.svg);
+        
+    }
+
+    &--castle{
+        content:url(../../assets/illustrations/castle.svg);
+       
+    }
+
+    &--mail{
+        content:url(../../assets/illustrations/mail.svg);
+    
+    }
+
+    &--phone{
+        content:url(../../assets/illustrations/phone.svg);
+    
+    }
+
+    &--location{
+        content:url(../../assets/illustrations/location.svg);
+    
+    }
+
+    &--facebook{
+        content:url(../../assets/illustrations/facebook.svg);
+    
+    }
+
+    &--instagram{
+        content:url(../../assets/illustrations/instagram.svg);
+    
+    }
+
+    &--twitter{
+        content:url(../../assets/illustrations/twitter.svg);
+    
+    }
+    &--down-arrow{
+        content:url(../../assets/illustrations/down-arrow.svg);
+    }
+    &--location-user{
+        content:url(../../assets/icons/location-user.svg);
+    }
+    &--briefcase-user{
+        content:url(../../assets/icons/briefcase-user.svg);
+    }
+    &--facebook-user{
+        content:url(../../assets/icons/facebook-user.svg);
+    }
+    &--linkedin-user{
+        content:url(../../assets/icons/linkedin-user.svg);
+    }
+    &--microphone{
+        content:url(../../assets/icons/microphone.svg);
+        display: inline-block;
+        margin-bottom: -3px;
+        margin-right: 4px;
+    }
+    &--image{
+        content:url(../../assets/icons/image.svg);
+        display: inline-block;
+        margin-bottom: -3px;
+        margin-right: 4px;
+    }
+    &--attachment{
+        content:url(../../assets/icons/attachment.svg);
+        display: inline-block;
+        margin-bottom: -3px;
+        margin-right: 4px;
+    }
+    &--edit{
+        content:url(../../assets/icons/edit.svg);
+    }
+    &--delete{
+        content:url(../../assets/icons/delete.svg);
+    }
+    &--dots{
+        content:url(../../assets/icons/dots.svg);
+    }
+    &--calendar{
+        content:url(../../assets/icons/calendar.svg);
+    }
+    &--heart-minus{
+        content:url(../../assets/icons/heart-minus.svg);
+    }
+    &--heart-plus{
+        content:url(../../assets/icons/heart-plus.svg);
+    }
+    &--comment{
+        content:url(../../assets/icons/comment.svg);
+    }
+    &--home{
+        content:url(../../assets/icons/home.svg);
+        width: 46px;
+        height: 46px;
+        margin-left: 1.1rem;
+        margin-top: 1rem;
+    }
+    &--home:hover{
+        content:url(../../assets/icons/home-wh.svg);
+        width: 46px;
+        height: 46px;
+        margin-left: 1.1rem;
+        margin-top: 1rem;
+    }
+    &--profile{
+        content:url(../../assets/icons/profile.svg);
+        width: 46px;
+        height: 46px;
+        margin-left: 1.1rem;
+        margin-top: 1rem;
+    }
+    &--profile:hover{
+        content:url(../../assets/icons/profile-wh.svg);
+        width: 46px;
+        height: 46px;
+        margin-left: 1.1rem;
+        margin-top: 1rem;
+    }
+}
