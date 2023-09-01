@@ -12,9 +12,8 @@ const AboutUs = () => {
                 Trip Planner je web aplikacija za planiranje putovanja uz pomoć preporuka lokalnog stanovništva.
               </h4>
               <h6> Ukoliko planirate posjetiti jedan od većih Hrvatskih gradova prijavite se i pogledajte 
-                prekrasne lokacije koje lokalno stanovništvo toga grada preporučuje. Ili ukoliko ste 
-                stanovnik jednog od ponuđenih gradova i mislite da neke lokacije zaslužuju da ih više ljudi posjeti,
-                podijelite ih sa svijetom.
+                prekrasne lokacije koje lokalno stanovništvo toga grada preporučuje. Ili ako ste 
+                stanovnik jednog od ponuđenih gradova, podijelite sa svijetom lokacije koje zaslužuju da ih više ljudi posjeti,
               </h6>
             </div>
             <div className="about-us__ilustration mt-4" >          
