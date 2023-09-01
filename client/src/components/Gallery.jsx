@@ -26,7 +26,7 @@ const data = [
   },
   {
     image: Picture3,
-    caption: "Split   ",
+    caption: "Split",
   },
   {
     image: Picture4,
