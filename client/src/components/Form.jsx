@@ -8,15 +8,17 @@ import { setLogin } from "state";
 import { FormControl, MenuItem, Select, InputLabel} from "@mui/material";
 import Tooltip from '@mui/material/Tooltip';
 import Dropzone from "react-dropzone";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const registerSchema = yup.object().shape({
     firstName: yup.string().required("required"),
     lastName: yup.string().required("required"),
-    email: yup.string().email("invalid email").required("required"),
-    password: yup.string().required("required"),
     role: yup.string().required("required"),
-    location: yup.string(),
+    location: yup.string().required("required"),
     picture: yup.string().required("required"),
+    email: yup.string().email("invalid email").required(""),
+    password: yup.string().required(""),
 })
 
 const loginSchema = yup.object().shape({
@@ -27,11 +29,11 @@ const loginSchema = yup.object().shape({
 const initialValuesRegister = {
     firstName: "",
     lastName: "",
-    role: "Recenzent",
+    role: "",
     location: "",
+    picture: "",
     email: "",
     password: "",
-    picture: "",
 }
 
 const initialValuesLogin = {
@@ -48,14 +50,25 @@ const Form = () => {
     const isLogin = pageType === "login";
     const isRegister = pageType === "register";
 
+    const cregister = (values ) => {
+        if (pageType === "register") {
+            if(values.firstName === undefined) toast.error('Molimo unesite ime!');    
+            if(values.lastName === undefined) toast.error('Molimo unesite prezime!');
+            if(values.role === undefined) toast.error('Molimo unesite vrstu računa!');
+            if(values.location === undefined) toast.error('Molimo unesite odakle ste!');
+            if(values.picture === undefined) toast.error('Molimo odaberite sliku profila!');
+            if(values.email === undefined || values.email === "") toast.error('Molimo odaberite postojeći email!');
+             if(values.password === undefined || values.password === "") toast.error('Molimo odaberite lozinku računa!');
+        } 
+    }
+    
     const register = async (values, onSubmitProps) => {
         const formData = new FormData();
         for (let value in values) {
           formData.append(value, values[value]);
         }
-
         formData.append("picturePath", values.picture.name);
-    
+        
         const savedUserResponse = await fetch(
           "https://tripplanner-zavrsni.onrender.com/auth/register",
           {
@@ -65,13 +78,14 @@ const Form = () => {
         );
         const savedUser = await savedUserResponse.json();
         onSubmitProps.resetForm();
-    
+        
         if (savedUser) {
           setPageType("login");
-        }
-      };
+          toast.success('Uspješno ste registrirani, prijavite se!');
+        }     
+    };
 
-      const login = async (values, onSubmitProps) => {
+    const login = async (values, onSubmitProps) => {
         const loggedInResponse = await fetch("https://tripplanner-zavrsni.onrender.com/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -87,13 +101,23 @@ const Form = () => {
             })
           );
           navigate("/home");
-        } else navigate("/login");
-      };
+        } else {
+            navigate("/login");
+        }
+        if(loggedIn.msg === "Incorrect password.") {
+            navigate("/login");
+            toast.error('Pogrešna lozinka!');
+        }
+        if(loggedIn.msg === "Incorrect email.") {
+            navigate("/login");
+            toast.error('Pogrešan email!');
+        }
+    };
 
-      const handleFormSubmit = async (values, onSubmitProps) => {
+    const handleFormSubmit = async (values, onSubmitProps) => {
         if (isLogin) await login(values, onSubmitProps);
         if (isRegister) await register(values, onSubmitProps);
-      };
+    };
     
     return (
         <Formik 
@@ -144,7 +168,7 @@ const Form = () => {
                                         labelId="demo-simple-select-label"
                                         name="role"
                                         value={values.role || ''}
-                                        label="Age"
+                                        label="Role"
                                         onChange={(e) => {
                                             handleChange(e);
                                             if (e.target.value === "Recenzent") setShowOption(true);
@@ -200,7 +224,7 @@ const Form = () => {
                                         >
                                             <input {...getInputProps()} />
                                             {!values.picture ? (
-                                            <p>Dodaj sliku profila ovdje!</p>
+                                                <p>Dodaj sliku profila ovdje!</p>
                                             ) : (
                                             <div className="form__dropzone--edit">
                                                 <span>{values.picture.name}</span>
@@ -249,6 +273,9 @@ const Form = () => {
                                 margin: "1rem 0",
                                 "&:hover": { backgroundColor: "#4a43c1" }
                             }}
+                            onClick={() => {
+                                cregister(values)
+                            }}
                         >
                             {isLogin ? "PRIJAVA" : "REGISTRACIJA"}
                         </Button>
@@ -263,9 +290,8 @@ const Form = () => {
                                     : "Već imaš račun? Prijavi se ovdje!"} 
                         </span>
                     </div>
-                </form>
+                </form>   
             )}
-
         </Formik>
     )
 }

@@ -5,6 +5,8 @@ import Profile from "scenes/Profile";
 import { useSelector } from "react-redux";
 import { CssBaseline } from "@mui/material";
 import Login from "scenes/Login";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -12,15 +14,20 @@ function App() {
 
   return (
     <div className="app">
-     <HashRouter>
-        <CssBaseline />
-        <Routes>
-          <Route path="/" element={<Welcome/>} />
-          <Route path="/home" element={isAuth ? <Home /> : <Navigate to="/"/>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile/:userId" element={isAuth ? <Profile /> : <Navigate to="/"/>} />
-        </Routes>
-     </HashRouter>
+      <div>
+        <HashRouter>
+          <CssBaseline />
+          <Routes>
+            <Route path="/" element={<Welcome/>} />
+            <Route path="/home" element={isAuth ? <Home /> : <Navigate to="/"/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile/:userId" element={isAuth ? <Profile /> : <Navigate to="/"/>} />
+          </Routes>
+      </HashRouter>
+      </div>
+      <div>  
+        <ToastContainer />
+      </div>
     </div>
   );
 }
