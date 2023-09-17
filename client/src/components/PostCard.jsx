@@ -17,6 +17,7 @@ const PostCard = ({
   userPicturePath,
   likes,
   comments,
+  isProfile,
 }) => {
   const [isComments, setIsComments] = useState(false);
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const PostCard = ({
   const [newComment, setNewComment] = useState("");
 
   const patchLike = async () => {
-    const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts/${postId}/like`, {
+    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -42,7 +43,7 @@ const PostCard = ({
   };
 
   const postComment = async () => {
-    const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts/${postId}/comments`, {
+    const response = await fetch(`http://localhost:3001/posts/${postId}/comments`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,10 +55,32 @@ const PostCard = ({
     dispatch(setPost({ post: updatedPost }));
   }
   
-
+  const postDelete = async () => {
+    if(window.confirm('Potvrdite brisanje ove objave!')){
+      console.log(postId)
+      try {
+        const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+          method: 'DELETE',
+          headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          }
+        });
+        if (response.status === 204) {
+          window.location.reload();
+        } else {
+          console.error('Error deleting post');
+        }
+      } catch (error) {
+        console.error('Error deleting post', error);
+      }
+    }
+  }
+  
   return (
     <div className="posts mt-4" key={postId}>
       <div className="posts__info">
+        
         <UserImage image={userPicturePath} size="55px" />
         <div className="posts__name ml-4">
         
@@ -70,21 +93,29 @@ const PostCard = ({
               <h5>{userLocation}</h5>
             </div>
           </div>
-          <div className="block"> 
-          { location &&
-          <>
-            <Divider sx={{ color: "#9B9A9C" }} textAlign="left"><h6>Lokacija</h6></Divider>
-            <div>
-              <span>
-                {location} 
-              </span>
-            </div>
+          <div className="flex-o">
+            <div className="block"> 
+            { location &&
+            <>
+              <Divider sx={{ color: "#9B9A9C" }} textAlign="left"><h6>Lokacija</h6></Divider>
+              <div>
+                
+                <span>
+                  {location}  
+                </span>
+              </div>
             </>
-          }
-          <Divider sx={{ color: "#9B9A9C" }} textAlign="left"><h6>Datum</h6></Divider>
-            <div>
-              {date}
+            }
+            <Divider sx={{ color: "#9B9A9C" }} textAlign="left"><h6>Datum</h6></Divider>
+              <div>
+                {date}
+              </div>
             </div>
+            {isProfile && postUserId === loggedInUserId ? 
+              <IconButton onClick={postDelete} className="posts__iconbtn">
+                <i className="icons icons--x-delete"/>
+              </IconButton> : null
+            }
           </div>
         </div>   
       </div>
@@ -98,7 +129,7 @@ const PostCard = ({
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem", borderTop: "0.75px solid #d5d5d5"}}
-            src={`https://tripplanner-zavrsni.onrender.com/assets/${picturePath}`}
+            src={picturePath}
           />
       )}
       <div>

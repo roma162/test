@@ -26,6 +26,23 @@ const SubmitPost = ({ picturePath, location }) => {
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const [value, onChange] = useState(new Date());
+    const [test, setTest] = useState("");
+
+    const testImg = (acceptedFiles) => {
+        console.log(acceptedFiles)
+        const file = acceptedFiles[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+              // The result contains the Base64-encoded image
+              const base64Image = reader.result;
+              setTest(base64Image)
+              console.log("base", base64Image)
+            }
+            reader.readAsDataURL(file);
+        }
+        console.log("test", test)
+    }
 
     const handlePost = async () => {
         const formData = new FormData();
@@ -39,9 +56,9 @@ const SubmitPost = ({ picturePath, location }) => {
 
         if (image) {
             formData.append("picture", image);
-            formData.append("picturePath", image.name);
+            formData.append("picturePath", test);
         }
-        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts`, {
+        const response = await fetch(`http://localhost:3001/posts`, {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData,
@@ -53,6 +70,7 @@ const SubmitPost = ({ picturePath, location }) => {
         onChange(null);
         setPost("");
         setPlace("");
+        setTest("");
     };
 
     return (
@@ -99,7 +117,11 @@ const SubmitPost = ({ picturePath, location }) => {
                     <Dropzone
                         acceptedFiles=".jpg,.jpeg,.png"
                         multiple={false}
-                        onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+                        onDrop={(acceptedFiles) => {
+                            setImage(acceptedFiles[0]);
+                            testImg(acceptedFiles);
+                        }
+                        }
                     >
                         {({ getRootProps, getInputProps }) => (
                         <div className='flex'>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const UserImage = ({ image, size = "80px" }) => {
+
   return (
     <div className='userimage'>
       <img
@@ -8,7 +9,7 @@ const UserImage = ({ image, size = "80px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://tripplanner-zavrsni.onrender.com/assets/${image}`}
+        src={image}
       />
     </div>
   )

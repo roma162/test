@@ -29,8 +29,6 @@ export const createPost = async (req, res) => {
     }
   };
 
-  
-
 /* READ */
 
 export const getFeedPosts = async (req, res) => {
@@ -81,7 +79,6 @@ export const likePosts = async (req, res) => {
     }
 };
 
-
 export const postComment = async (req, res) => {
     try{
         const { id } = req.params;
@@ -102,4 +99,15 @@ export const postComment = async (req, res) => {
         res.status(404).json({ message: err.message });
 
     }
+};
+
+export const postDelete = async (req, res) => {
+    try {
+        const {id} = req.params;
+        await Post.findByIdAndDelete(id);
+        res.status(204).end();
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
 };

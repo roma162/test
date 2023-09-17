@@ -49,6 +49,8 @@ const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px");
     const isLogin = pageType === "login";
     const isRegister = pageType === "register";
+    const [test, setTest] = useState("");
+    let [loading, setLoading] = useState(false);
 
     const cregister = (values ) => {
         if (pageType === "register") {
@@ -58,19 +60,35 @@ const Form = () => {
             if(values.location === undefined) toast.error('Molimo unesite odakle ste!');
             if(values.picture === undefined) toast.error('Molimo odaberite sliku profila!');
             if(values.email === undefined || values.email === "") toast.error('Molimo odaberite postojeći email!');
-             if(values.password === undefined || values.password === "") toast.error('Molimo odaberite lozinku računa!');
+            if(values.password === undefined || values.password === "") toast.error('Molimo odaberite lozinku računa!');
         } 
     }
     
+    const testImg = (acceptedFiles) => {
+        console.log(acceptedFiles)
+        const file = acceptedFiles[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+              const base64Image = reader.result;
+              setTest(base64Image)
+              console.log("base", base64Image)
+            }
+            reader.readAsDataURL(file);
+        }
+        console.log("test", test)
+    }
+    
     const register = async (values, onSubmitProps) => {
+        console.log(test)
         const formData = new FormData();
         for (let value in values) {
           formData.append(value, values[value]);
         }
-        formData.append("picturePath", values.picture.name);
-        
+        formData.append("picturePath", test);
+
         const savedUserResponse = await fetch(
-          "https://tripplanner-zavrsni.onrender.com/auth/register",
+          "http://localhost:3001/auth/register",
           {
             method: "POST",
             body: formData,
@@ -79,20 +97,24 @@ const Form = () => {
         const savedUser = await savedUserResponse.json();
         onSubmitProps.resetForm();
         
-        if (savedUser) {
+        if (savedUser && test !== "") {
           setPageType("login");
           toast.success('Uspješno ste registrirani, prijavite se!');
-        }     
+          setTest("");
+        }   
     };
 
     const login = async (values, onSubmitProps) => {
-        const loggedInResponse = await fetch("https://tripplanner-zavrsni.onrender.com/auth/login", {
+        setLoading(true);
+        const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
         });
+        
         const loggedIn = await loggedInResponse.json();
         onSubmitProps.resetForm();
+        
         if (loggedIn) {
           dispatch(
             setLogin({
@@ -112,6 +134,7 @@ const Form = () => {
             navigate("/login");
             toast.error('Pogrešan email!');
         }
+        setLoading(false);
     };
 
     const handleFormSubmit = async (values, onSubmitProps) => {
@@ -137,6 +160,7 @@ const Form = () => {
             }) => (
                 <form onSubmit={handleSubmit}>
                     <div className="form" sx={{"& < div": { gridColumn : isNonMobile ? undefined : "span 4" }}}>
+                    
                         {isRegister && (
                             <>
                                 <TextField 
@@ -211,8 +235,10 @@ const Form = () => {
                                     <Dropzone
                                         acceptedFiles=".jpg,.jpeg,.png"
                                         multiple={false}
-                                        onDrop={(acceptedFiles) =>
+                                        onDrop={(acceptedFiles) => {
                                         setFieldValue("picture", acceptedFiles[0])
+                                            testImg(acceptedFiles);
+                                        }
                                         }
                                     >
                                         {({ getRootProps, getInputProps }) => (
@@ -278,6 +304,7 @@ const Form = () => {
                             }}
                         >
                             {isLogin ? "PRIJAVA" : "REGISTRACIJA"}
+                            { loading === true ? <span className="loader" /> : null}
                         </Button>
                         <span
                             onClick={() => {

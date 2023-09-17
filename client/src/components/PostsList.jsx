@@ -10,7 +10,7 @@ const PostsList = ({ userId, isProfile = false, filterList, userRole }) => {
   const loggedInUserId = useSelector((state) => state.user._id);
 
   const getPosts = async () => {
-    const response = await fetch("https://tripplanner-zavrsni.onrender.com/posts", {
+    const response = await fetch("http://localhost:3001/posts", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -20,7 +20,7 @@ const PostsList = ({ userId, isProfile = false, filterList, userRole }) => {
 
   const getUserPosts = async () => {
     const response = await fetch(
-      `https://tripplanner-zavrsni.onrender.com/posts/${userId}/posts`,
+      `http://localhost:3001/posts/${userId}/posts`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -83,6 +83,7 @@ const PostsList = ({ userId, isProfile = false, filterList, userRole }) => {
                 userPicturePath={userPicturePath}
                 likes={likes}
                 comments={comments}
+                isProfile={isProfile}
               />
             ) : !isProfile ? ( 
               <PostCard
@@ -99,6 +100,7 @@ const PostsList = ({ userId, isProfile = false, filterList, userRole }) => {
                 userPicturePath={userPicturePath}
                 likes={likes}
                 comments={comments}
+                isProfile={isProfile}
               />
             ) : userRole==="Recenzent" ? (
             
@@ -116,6 +118,7 @@ const PostsList = ({ userId, isProfile = false, filterList, userRole }) => {
                 userPicturePath={userPicturePath}
                 likes={likes}
                 comments={comments}
+                isProfile={isProfile}
               />
             ) : null
             }

@@ -123,7 +123,6 @@
     &__info{
         display: flex;
         align-items: center;
-        padding-right: 1rem;
 
         span{
             font-size: 1rem;
@@ -150,11 +149,14 @@
 
     &__desc{
         padding: 0.5rem 0;
-
+        width: 100%;
+        overflow: hidden;
         span{
             font-size: 1.4rem;
             color: #535353;
-        }
+            max-width: 100%;
+            
+        }      
     }
 
     &__comment{
@@ -164,11 +166,12 @@
         }
     }
 
+    &__iconbtn{
+        height: 36px;
+    }
+
     
 }
-
-
-
 
 
 

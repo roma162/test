@@ -17,6 +17,7 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
+import { postDelete } from "./controllers/posts.js";
 
 var options = {
   "origin": "*",
@@ -67,8 +68,8 @@ app.use("/posts", postRoutes);
 
 app.patch("/users/:id", async (req, res) => { 
   try {
-    const id = req.params.id;
-    const user = await User.findOneAndUpdate(id, req.body, {new: true});
+    const {userId, changeRole} = req.body
+    const user = await User.findByIdAndUpdate(userId, {role: changeRole}, {new: true});
     console.log(user);
     res.json({user})
   } catch (err) {
@@ -76,6 +77,10 @@ app.patch("/users/:id", async (req, res) => {
     res.status(500).json({err: "Something went wrong"});
   }
 });
+
+/* DELETE */
+
+app.delete("/posts/:id", verifyToken , postDelete);
 
 /* MONGOOSE SETUP */
 

@@ -17,9 +17,10 @@ const UserCard = ({userId, handleChange, loc, picturePath } ) => {
     const navigate = useNavigate();
     const token = useSelector((state) => state.token);
     const dispatch = useDispatch();
+    const loggedInUserId = useSelector((state) => state.user._id);
 
     const getUser = async () => {
-        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/users/${userId}`, {
+        const response = await fetch(`http://localhost:3001/users/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -28,22 +29,21 @@ const UserCard = ({userId, handleChange, loc, picturePath } ) => {
     };
     
     const handleChangeRole = async () => {
-        let roleChange;
+        var roleChange;
         if ( role === "Recenzent" ){
             roleChange = "Putnik"
         } else roleChange = "Recenzent";
-        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/users/${userId}`, {
+        const response = await fetch(`http://localhost:3001/users/${loggedInUserId}`, {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ role: roleChange }),
+          body: JSON.stringify({ changeRole: roleChange, userId: loggedInUserId }),
         });
         const data  = await response.json();
         console.log(data);
         dispatch(setLogout())
-        
     };
 
     useEffect(() => {
