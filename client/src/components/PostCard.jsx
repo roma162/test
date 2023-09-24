@@ -29,7 +29,7 @@ const PostCard = ({
   const [newComment, setNewComment] = useState("");
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ const PostCard = ({
   };
 
   const postComment = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/comments`, {
+    const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts/${postId}/comments`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const PostCard = ({
     if(window.confirm('Potvrdite brisanje ove objave!')){
       console.log(postId)
       try {
-        const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/posts/${postId}`, {
           method: 'DELETE',
           headers: {
           Authorization: `Bearer ${token}`,
