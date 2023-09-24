@@ -88,7 +88,7 @@ const Form = () => {
         formData.append("picturePath", test);
 
         const savedUserResponse = await fetch(
-          "http://localhost:3001/auth/register",
+          "https://tripplanner-zavrsni.onrender.com/auth/register",
           {
             method: "POST",
             body: formData,
@@ -106,7 +106,7 @@ const Form = () => {
 
     const login = async (values, onSubmitProps) => {
         setLoading(true);
-        const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+        const loggedInResponse = await fetch("https://tripplanner-zavrsni.onrender.com/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
