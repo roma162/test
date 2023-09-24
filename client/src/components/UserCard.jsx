@@ -20,7 +20,7 @@ const UserCard = ({userId, handleChange, loc, picturePath } ) => {
     const loggedInUserId = useSelector((state) => state.user._id);
 
     const getUser = async () => {
-        const response = await fetch(`http://localhost:3001/users/${userId}`, {
+        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/users/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -33,7 +33,7 @@ const UserCard = ({userId, handleChange, loc, picturePath } ) => {
         if ( role === "Recenzent" ){
             roleChange = "Putnik"
         } else roleChange = "Recenzent";
-        const response = await fetch(`http://localhost:3001/users/${loggedInUserId}`, {
+        const response = await fetch(`https://tripplanner-zavrsni.onrender.com/users/${loggedInUserId}`, {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
